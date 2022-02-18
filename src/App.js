@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import axios from 'axios';
 import './App.css';
 import { Dashboard } from './components/Dashboard.jsx';
 
@@ -10,12 +9,6 @@ import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-
-
-const pingAPI = async () => {
-  let ping = await axios.get('https://api.coingecko.com/api/v3/ping');
-  console.log(ping);
-}
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -41,12 +34,16 @@ function App() {
         <SignOut/>
        <section>
          {user ? <Dashboard/> : <SignIn/>}
-         {console.log(process.env.DEV_API_KEY)}
        </section>
       </header>
     </div>
   );
 }
+
+
+//https://colorhunt.co/palette/1a1a402700827a0bc0fa58b6
+//https://www.coingecko.com/en/api/documentation
+
 
 function SignIn() {
 
